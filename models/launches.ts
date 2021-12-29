@@ -76,3 +76,10 @@ export const getOneLaunch = (id: number) => {
     }
     return null;
 }
+
+export const addLaunch = (data: any) => {
+    launches.set(data.flightNumber, Object.assign(data, {
+        upcoming: true,
+        customers: ["ZTM", "NASA"]
+    }));
+}
