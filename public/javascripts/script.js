@@ -1,4 +1,4 @@
-let launches = [];
+let launches;
 
 const numberHeading = "No.".padStart(5);
 const dateHeading = "Date".padEnd(15);
@@ -16,6 +16,13 @@ function initValues() {
 
 function loadLaunches() {
   // TODO: Once API is ready.
+  return fetch("/launches")
+    .then((launchesResponse) => launchesResponse.json())
+    .then((fetchedLaunches) => {
+      launches = fetchedLaunches.sort((a, b) => {
+        return a.flightNumber > b.flightNumber;
+      });
+    });
   // Load launches and sort by flight number.
 }
 
@@ -23,7 +30,7 @@ async function loadPlanets() {
   // TODO: Once API is ready.
 
   return fetch("/planets")
-    .then((planetsresponse) => planetsresponse.json())
+    .then((planetsResponse) => planetsResponse.json())
     .then((planets) => {
       const planetSelector = document.getElementById("planets-selector");
       planets.forEach((planet) => {
