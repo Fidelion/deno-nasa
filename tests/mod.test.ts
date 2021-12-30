@@ -1,4 +1,4 @@
-import { assertEquals, assertNotEquals } from "https://deno.land/std/testing/asserts.ts";
+import { assertEquals, assertNotEquals } from "../src/test_deps.ts";
 
 import { filterHabitablePlanets } from "../models/planets.ts";
 

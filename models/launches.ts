@@ -1,7 +1,9 @@
-import * as log from "https://deno.land/std/log/mod.ts";
-import * as _ from "https://raw.githubusercontent.com/lodash/lodash/4.17.21-es/lodash.js";
+import {
+    log,
+    _
+} from "../src/deps.ts";
 
-interface Launch {
+export interface Launch {
     flightNumber: number;
     mission: string;
     rocket: string;
@@ -77,9 +79,18 @@ export const getOneLaunch = (id: number) => {
     return null;
 }
 
-export const addLaunch = (data: any) => {
+export const addLaunch = (data: Launch) => {
     launches.set(data.flightNumber, Object.assign(data, {
         upcoming: true,
         customers: ["ZTM", "NASA"]
     }));
+}
+
+export const removeLaunch = (id: number) => {
+    const aborted = launches.get(id);
+    if(aborted) {
+        aborted.upcoming = false;
+        aborted.success = false;
+    }
+    return aborted;
 }

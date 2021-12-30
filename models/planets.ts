@@ -1,8 +1,10 @@
-import { join } from "https://deno.land/std/path/mod.ts";
-import { BufReader } from "https://deno.land/std/io/bufio.ts";
-import { parse } from "https://deno.land/std/encoding/csv.ts";
-import * as _ from "https://raw.githubusercontent.com/lodash/lodash/4.17.21-es/lodash.js";
-import * as log from "https://deno.land/std/log/mod.ts";
+import {
+    log,
+    join,
+    parse,
+    BufReader,
+    _
+} from "../src/deps.ts";
 
 
 // interface Planet {
